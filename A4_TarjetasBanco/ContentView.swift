@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView(.vertical, showsIndicators: true){
+            VStack(spacing:-10){
+                TarjetaView()
+                TarjetaView(color: .blue, banco: "Mercado Pago", logo: "mp")
+                TarjetaView(color: .purple, banco: "NU", logo: "nu")
+            }
         }
-        .padding()
     }
 }
 
