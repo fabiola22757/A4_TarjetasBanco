@@ -12,6 +12,12 @@ struct TarjetaView: View {
     @Binding var isCardLocked: Bool
     var index: Int
     @Binding var selectedIndex: Int
+    //variables de star
+    /*
+    var starIndex: Int
+    @State var starPressed: Bool = false
+    @State var selectedStar: Int
+     */
     
     var color: Color = .red
     var banco: String = "Banamex"
@@ -23,6 +29,15 @@ struct TarjetaView: View {
     func iconPressed() -> CGFloat{
         return isCardLocked ? 180 : 0
     }
+    
+    //Función al dar clic en Star
+    /*
+    func starPressed(){
+        if selectedStar == starIndex {
+            
+        }
+    }
+     */
     
     var body: some View {
         RoundedRectangle(cornerRadius: 15)
@@ -57,6 +72,8 @@ struct TarjetaView: View {
                             .foregroundStyle(Color.white)
                             .font(.system(size: 23))
                         Spacer()
+                        Image(systemName: "star")
+                            .foregroundStyle(Color.white)
                     }.padding(.bottom, 15)
                     
                     //Nombre del titular

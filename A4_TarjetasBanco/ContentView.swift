@@ -11,6 +11,7 @@ struct ContentView: View {
     //variables
     @State var cardSelected: Int = -1
     @State var isCardLockedPadre: Bool = false
+    @State var starSelected: Int = -1
     
     var body: some View {
         //GroupBox isCardLockedPadre
