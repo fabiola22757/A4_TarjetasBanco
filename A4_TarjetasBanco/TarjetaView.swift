@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct TarjetaView: View {
-    @State var pressed: Bool = false
+    //variables
+    @Binding var isCardLocked: Bool
+    var index: Int
+    @Binding var selectedIndex: Int
+    
     var color: Color = .red
     var banco: String = "Banamex"
     var logo: String = "bnmx"
     var numero: String = "1234 5678 9012 3456"
     var nombre: String = "Fabiola Juárez Flores"
+    
+    //Función al dar clic
+    func iconPressed() -> CGFloat{
+        return isCardLocked ? 180 : 0
+    }
     
     var body: some View {
         RoundedRectangle(cornerRadius: 15)
@@ -64,16 +73,16 @@ struct TarjetaView: View {
                     HStack{
                         Button(action: {
                             withAnimation(){
-                                self.pressed.toggle()
+                                self.isCardLocked.toggle()
                             }
                         }){
-                            Image(systemName: "lock")
+                            Image(systemName: isCardLocked ? "lock" : "lock.open")
                                 .foregroundStyle(Color.white)
                                 .font(.system(size: 18, weight: .semibold))
                                 .padding([.leading, .trailing], 10)
                         }
                         
-                        Text("Bloquear")
+                        Text(isCardLocked ? "Desbloquear" : "Bloquear")
                             .foregroundStyle(.white)
                         Spacer()
                         
@@ -91,10 +100,10 @@ struct TarjetaView: View {
                     }
                 }.padding()
                 
-            }.rotationEffect(pressed ? .degrees(180) : .degrees(0))
+            }.rotationEffect(.degrees(iconPressed()))
     }
 }
 
 #Preview {
-    TarjetaView()
+    TarjetaView(isCardLocked: .constant(false), index: 0, selectedIndex: .constant(-1))
 }

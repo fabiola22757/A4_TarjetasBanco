@@ -8,12 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    //variables
+    @State var cardSelected: Int = -1
+    @State var isCardLockedPadre: Bool = false
+    
     var body: some View {
+        //GroupBox isCardLockedPadre
+        HStack{
+            GroupBox(label: Label(isCardLockedPadre ? "Tarjetas congeladas" : "", systemImage: isCardLockedPadre ? "lock.badge.clock.fill" : "")) {
+                Text(isCardLockedPadre ? "Todas tus tarjetas están temporalmente desactivadas por seguridad." : "")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.top, 4)
+            }
+            .padding()
+        }
+        
         ScrollView(.vertical, showsIndicators: true){
             VStack(spacing:-10){
-                TarjetaView()
-                TarjetaView(color: .blue, banco: "Mercado Pago", logo: "mp")
-                TarjetaView(color: .purple, banco: "NU", logo: "nu")
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 0, selectedIndex: $cardSelected)
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 1, selectedIndex: $cardSelected, color: .blue, banco: "Mercado Pago", logo: "mp")
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 3, selectedIndex: $cardSelected, color: .purple, banco: "NU", logo: "nu")
             }
         }
     }
