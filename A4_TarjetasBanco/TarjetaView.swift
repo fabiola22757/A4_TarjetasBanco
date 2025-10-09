@@ -13,6 +13,7 @@ struct TarjetaView: View {
     var index: Int
     @Binding var selectedIndex: Int
     @Binding var selectedStarId: Int
+    @State var showAlert : Bool = false
     
     var color: Color = .red
     var banco: String = "Banamex"
@@ -58,6 +59,7 @@ struct TarjetaView: View {
                             .foregroundStyle(Color.white)
                             .font(.system(size: 23))
                         Spacer()
+                        //Ícono de favorito
                         Image(systemName: selectedStarId == index ? "star.fill" : "star")
                             .foregroundStyle(Color.white)
                             .onTapGesture{
@@ -68,8 +70,11 @@ struct TarjetaView: View {
                                     }else{
                                         //Seleccionar esta estrellita
                                         selectedStarId = index
+                                        showAlert = true //al pulsar la estrellita
                                     }
                                 }
+                            }.alert(isPresented: $showAlert) {
+                                Alert(title: Text("Método de pago favorito"), message: Text("Tarjeta \(banco) ha sido establecida como método preferido de pago exitosamente"), dismissButton: .default(Text("OK")))
                             }
                     }.padding(.bottom, 15)
                     
