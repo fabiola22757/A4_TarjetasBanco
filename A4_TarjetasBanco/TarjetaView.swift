@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TarjetaView: View {
-    //variables
+    //variables recibidas
     @Binding var isCardLocked: Bool
     var index: Int
     @Binding var selectedIndex: Int
+    @Binding var selectedStarId: Int
     
     var color: Color = .red
     var banco: String = "Banamex"
@@ -19,22 +20,11 @@ struct TarjetaView: View {
     var numero: String = "1234 5678 9012 3456"
     var nombre: String = "Fabiola Juárez Flores"
     
-    @State var fav: String = "star"
-    var starIndex: Int = 0
-    @State var starPressed: Bool = false
-    @State var selectedStarId: Int = -1
-    
     //Función al dar clic
     func iconPressed() -> CGFloat{
         return isCardLocked ? 180 : 0
     }
-    
-    //Función al dar clic en Star
-    func favorite(){
-        fav = starPressed ? "star.fill" : "star"
-    }
      
-    
     var body: some View {
         RoundedRectangle(cornerRadius: 15)
             .frame(width: 350, height: 200)
@@ -68,13 +58,17 @@ struct TarjetaView: View {
                             .foregroundStyle(Color.white)
                             .font(.system(size: 23))
                         Spacer()
-                        Image(systemName: fav)
+                        Image(systemName: selectedStarId == index ? "star.fill" : "star")
                             .foregroundStyle(Color.white)
                             .onTapGesture{
                                 withAnimation(){
-                                    selectedStarId = starIndex
-                                    favorite()
-                                    self.starPressed.toggle()
+                                    if selectedStarId == index{
+                                        //Si ya estaba seleccionado, deseleccionar
+                                        selectedStarId = -1
+                                    }else{
+                                        //Seleccionar esta estrellita
+                                        selectedStarId = index
+                                    }
                                 }
                             }
                     }.padding(.bottom, 15)
@@ -125,5 +119,5 @@ struct TarjetaView: View {
 }
 
 #Preview {
-    TarjetaView(isCardLocked: .constant(false), index: 0, selectedIndex: .constant(-1))
+    TarjetaView(isCardLocked: .constant(false), index: 0, selectedIndex: .constant(-1), selectedStarId: .constant(-1))
 }
