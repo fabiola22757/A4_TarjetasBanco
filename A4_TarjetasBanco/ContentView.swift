@@ -27,7 +27,7 @@ struct ContentView: View {
         
         ScrollView(.vertical, showsIndicators: true){
             VStack(spacing:-10){
-                TarjetaView(isCardLocked: $isCardLockedPadre, index: 0, selectedIndex: $cardSelected)
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 0, selectedIndex: $cardSelected, starIndex: 0, selectedStarId: starSelected)
                 TarjetaView(isCardLocked: $isCardLockedPadre, index: 1, selectedIndex: $cardSelected, color: .blue, banco: "Mercado Pago", logo: "mp")
                 TarjetaView(isCardLocked: $isCardLockedPadre, index: 3, selectedIndex: $cardSelected, color: .purple, banco: "NU", logo: "nu")
             }
