@@ -15,11 +15,11 @@ struct TarjetaView: View {
     @Binding var selectedStarId: Int
     @State var showAlert : Bool = false
     
-    var color: Color = .red
-    var banco: String = "Banamex"
-    var logo: String = "bnmx"
-    var numero: String = "1234 5678 9012 3456"
-    var nombre: String = "Fabiola Juárez Flores"
+    var color: Color
+    var banco: String
+    var logo: String
+    var numero: String
+    var nombre: String
     
     //Función al dar clic
     func iconPressed() -> CGFloat{
@@ -124,5 +124,5 @@ struct TarjetaView: View {
 }
 
 #Preview {
-    TarjetaView(isCardLocked: .constant(false), index: 0, selectedIndex: .constant(-1), selectedStarId: .constant(-1))
+    TarjetaView(isCardLocked: .constant(false), index: 0, selectedIndex: .constant(-1), selectedStarId: .constant(-1), color: .red, banco: "Banamex", logo: "bnmx", numero: "1234 5678 9012 3456", nombre: "Fabiola Juárez Flores")
 }

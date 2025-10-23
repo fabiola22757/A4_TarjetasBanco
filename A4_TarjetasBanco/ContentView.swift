@@ -27,9 +27,9 @@ struct ContentView: View {
         
         ScrollView(.vertical, showsIndicators: true){
             VStack(spacing:-10){
-                TarjetaView(isCardLocked: $isCardLockedPadre, index: 0, selectedIndex: $cardSelected, selectedStarId: $starSelected)
-                TarjetaView(isCardLocked: $isCardLockedPadre, index: 1, selectedIndex: $cardSelected, selectedStarId: $starSelected, color: .blue, banco: "Mercado Pago", logo: "mp")
-                TarjetaView(isCardLocked: $isCardLockedPadre, index: 3, selectedIndex: $cardSelected, selectedStarId: $starSelected, color: .purple, banco: "NU", logo: "nu")
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 0, selectedIndex: $cardSelected, selectedStarId: $starSelected, color: .red, banco: "Banamex", logo: "bnmx", numero: "1234 5678 9012 3456", nombre: "Fabiola Juárez Flores")
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 1, selectedIndex: $cardSelected, selectedStarId: $starSelected, color: .blue, banco: "Mercado Pago", logo: "mp", numero: "1234 5678 9012 3456", nombre: "Fabiola Juárez Flores")
+                TarjetaView(isCardLocked: $isCardLockedPadre, index: 2, selectedIndex: $cardSelected, selectedStarId: $starSelected, color: .purple, banco: "NU", logo: "nu", numero: "1234 5678 9012 3456", nombre: "Fabiola Juárez Flores")
             }
         }
     }
